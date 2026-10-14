@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="967.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.crud.controller.ProductosController">
+
+
+    <!-- ======================= TÍTULO ======================= -->
+    <top>
+        <Label text="Registro de Productos" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets bottom="15.0" top="15.0" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+
+    <!-- ======================= FORMULARIO + TABLA ======================= -->
+    <center>
+        <VBox prefHeight="741.0" prefWidth="911.0" spacing="10.0">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+            <children>
+
+                <GridPane hgap="10.0" prefHeight="167.0" prefWidth="920.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints maxWidth="221.33334350585938" minWidth="87.3333231608073" prefWidth="126.00001017252605" />
+                        <ColumnConstraints maxWidth="349.33333587646484" minWidth="226.66665649414062" prefWidth="320.6666666666667" />
+                        <ColumnConstraints maxWidth="133.3333129882813" minWidth="44.0" prefWidth="66.0" />
+                        <ColumnConstraints minWidth="250.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                  <RowConstraints />
+                    </rowConstraints>
+
+                    <Label text="Codigo:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="txtCodigo" promptText="Ingrese el ID del Producto" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label text="Precio:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <TextField fx:id="txtPrecio" promptText="Seleccione Precio" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                    <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="txtNombre" promptText="Nombre del Producto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label text="Stock:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <TextField fx:id="txtStock" promptText="Seleccione Texto" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                    <Label text="Descripción:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <TextField fx:id="txtDescripcion" promptText="Ingrese la descripción del producto" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label text="Marca:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+
+                    <Label text="Categoria:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <ComboBox fx:id="cmbCategoria" prefHeight="25.0" prefWidth="321.0" promptText="Seleccione la categoria" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                    <Label prefHeight="18.0" prefWidth="106.0" text="Fecha Ingreso" GridPane.rowIndex="5" />
+                    <DatePicker fx:id="dtpFechaCreacion" prefHeight="25.0" prefWidth="321.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    <ComboBox fx:id="cmbMarca" prefWidth="250.0" promptText="Seleccione Marca" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                </GridPane>
+
+                <HBox spacing="10.0">
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                    <children>
+                        <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+                        <Button fx:id="btnLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
+                        <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#actualizarTabla" text="Actualizar tabla" />
+                        <Button fx:id="btnActualizarRegistro" mnemonicParsing="false" onAction="#actualizarRegistro" text="Actualizar registro" />
+                        <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
+                    </children>
+                </HBox>
+            <Separator prefWidth="200.0" />
+
+                <Label text="Busqueda y filtros">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                </Label>
+            <GridPane hgap="10.0" layoutX="30.0" layoutY="20.0" prefHeight="167.0" prefWidth="920.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints maxWidth="288.79999389648435" minWidth="87.3333231608073" prefWidth="203.19996337890626" />
+                  <ColumnConstraints maxWidth="349.33333587646484" minWidth="158.4000061035157" prefWidth="244.80003662109374" />
+                  <ColumnConstraints maxWidth="133.3333129882813" minWidth="44.0" prefWidth="100.80002441406248" />
+                  <ColumnConstraints maxWidth="315.1999755859375" minWidth="250.0" prefWidth="287.1999755859375" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+               <children>
+                  <Label text="Codigo o nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="txtBuscarCodigoNombre" promptText="Buscar..." GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  <Label text="Categoria:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  <Label text="Desde:" GridPane.rowIndex="1" />
+                  <Label text="Hasta:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="Precio mínimo" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtprecioMinimo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Precio Maximo:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="chkExistencia" mnemonicParsing="false" prefHeight="18.0" prefWidth="204.0" text="Solo productos con existencias" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cmbCategoriaBusqueda" prefHeight="25.0" prefWidth="321.0" promptText="Seleccione la categoria" GridPane.columnIndex="3" />
+                  <DatePicker fx:id="dtpDesde" prefHeight="25.0" prefWidth="321.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="dtpHasta" layoutX="224.0" layoutY="46.0" prefHeight="25.0" prefWidth="321.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtPrecioMaximo" layoutX="224.0" layoutY="82.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label layoutX="480.0" layoutY="14.0" text="Ordenar por:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cmbOrdenar" layoutX="592.0" layoutY="10.0" prefHeight="25.0" prefWidth="321.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <HBox spacing="10.0">
+               <children>
+                  <Button fx:id="btnBuscarProductos" mnemonicParsing="false" onAction="#buscarProductos" prefHeight="26.0" prefWidth="82.0" text="Buscar" />
+                  <Button fx:id="limpiarFiltros" mnemonicParsing="false" onAction="#limpiarFiltros" prefHeight="26.0" prefWidth="99.0" text="Limpiar filtro">
+                     <opaqueInsets>
+                        <Insets top="10.0" />
+                     </opaqueInsets>
+                  </Button>
+               </children>
+            </HBox>
+            <TableView fx:id="tblProductos" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                  <TableColumn fx:id="colId" prefWidth="75.0" text="Código" />
+                <TableColumn fx:id="colNombre" prefWidth="125.60000610351562" text="Nombre" />
+                <TableColumn fx:id="colCategoria" prefWidth="127.199951171875" text="Categoría" />
+                  <TableColumn fx:id="colMarca" minWidth="0.0" prefWidth="123.20001220703125" text="Marca" />
+                  <TableColumn fx:id="colPrecio" prefWidth="100.79998779296875" text="Precio" />
+                  <TableColumn fx:id="colStock" prefWidth="104.0" text="Stock" />
+                  <TableColumn fx:id="colFecha" minWidth="8.0" prefWidth="126.39996337890625" text="Fecha Creación" />
+              </columns>
+            </TableView>
+
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>
